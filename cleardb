@@ -1,0 +1,1 @@
+python manage.py sqlclear myapp | python manage.py dbshell

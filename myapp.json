@@ -1,0 +1,50 @@
+[
+{
+    "pk": 1, 
+    "model": "myapp.http_server", 
+    "fields": {
+        "version": "1", 
+        "name": "Tomcat"
+    }
+},
+{
+    "pk": 2, 
+    "model": "myapp.http_server", 
+    "fields": {
+        "version": "1", 
+        "name": "Apache"
+    }
+},
+{
+    "pk": 1, 
+    "model": "myapp.language", 
+    "fields": {
+        "version": "1.6", 
+        "name": "Java"
+    }
+},
+{
+    "pk": 2, 
+    "model": "myapp.language", 
+    "fields": {
+        "version": "2.6", 
+        "name": "Python"
+    }
+},
+{
+    "pk": 1, 
+    "model": "myapp.package", 
+    "fields": {
+        "version": "1", 
+        "name": "Maven"
+    }
+},
+{
+    "pk": 1, 
+    "model": "myapp.server", 
+    "fields": {
+        "load": "1", 
+        "os_type": "Ubuntu", 
+        "name": "S1"
+    }
+}
