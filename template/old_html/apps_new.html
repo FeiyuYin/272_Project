@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
+     <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
    
     <style type="text/css">
       
@@ -113,14 +113,13 @@
     <div class="container">
 
       <div class="masthead">
-        <h3 class="muted">Cloud Deploy Platform</h3>
-	<p align="right"><a href = "{{ logiourl }}">{{ logio }}</a></p>
+        <h3 class="muted">Project name</h3>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-		<li class="active"><a href="#">Home</a></li>
-          	<li><a href="/features/displayapps/">MyWebApps</a></li>
+		<li><a href="/index/">Home</a></li>
+          	<li class="active"><a href="/features/displayapp/">MyWebApps</a></li>
           	<li><a href="/features/deploy_start/">Deploy Webapp</a></li>
           	<li><a href="#">Upload</a></li>
           	<li><a href="#">About</a></li>
@@ -131,18 +130,86 @@
         </div><!-- /.navbar -->
       </div>
 
-	<div class="main-containers">
-	
-	<form action = "/accounts/auth/" class="form-signin" method = "post" >
-	<h2 class="form-signin-heading">Please log in</h2>
-	<input type="text" class="input-block-level" placeholder="User name" name = "user_name">
-	<input type="password" class="input-block-level" placeholder="Password" name = "user_password">
-	<button class="btn btn-large btn-primary" type="submit">Log in</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/accounts/register_start/"><font color="3366CC">Rgister</font></a>
-	</form>
-	</div>
+	<div>
+         <h2>WebApps:</h2>
+	<table cellspacing="1" class="tablesorter">
+		    <thead>
+        		<tr>
+            		<th>Webapp name</th>
+            		<th>URL</th>
+            		<th>Creat date</th>
+            		<th>Last modify date</th>
+        		</tr>
+    		    </thead>
+			<tbody>
+                        {% for webapp in webapps%}
+				<tr>
+            			<td><a href = "/features/displayapp/get/{{webapp.id}}/">{{webapp.name}}</a></td>
+            			<td><a>{{webapp.url}}</a></td>
+            			<td>{{webapp.create_date}}</td>
+            			<td>{{webapp.last_modify_date}}</td>
+        			</tr>
+                        {% endfor%}
+			</tbody>
+	</table>
+        </div>
+
   
 
+<table cellspacing="1" class="tablesorter">             
+    <thead>
+        <tr> 
+            <th>first name</th> 
+            <th>last name</th> 
+            <th>age</th> 
+            <th>total</th> 
+            <th>discount</th> 
+            <th>date</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        <tr> 
+            <td>peter</td> 
+            <td>parker</td> 
+            <td>28</td> 
+            <td>$9.99</td> 
+            <td>20%</td> 
+            <td>jul 6, 2006 8:14 am</td> 
+        </tr> 
+        <tr> 
+            <td>john</td> 
+            <td>hood</td> 
+            <td>33</td> 
+            <td>$19.99</td> 
+            <td>25%</td> 
+            <td>dec 10, 2002 5:14 am</td> 
+        </tr> 
+        <tr> 
+            <td>clark</td> 
+            <td>kent</td> 
+            <td>18</td> 
+            <td>$15.89</td> 
+            <td>44%</td> 
+            <td>jan 12, 2003 11:14 am</td> 
+        </tr> 
+        <tr> 
+            <td>bruce</td> 
+            <td>almighty</td> 
+            <td>45</td> 
+            <td>$153.19</td> 
+            <td>44%</td> 
+            <td>jan 18, 2001 9:12 am</td> 
+        </tr> 
+        <tr> 
+            <td>bruce</td> 
+            <td>evans</td> 
+            <td>22</td> 
+            <td>$13.19</td> 
+            <td>11%</td> 
+            <td>jan 18, 2007 9:12 am</td> 
+        </tr> 
+    </tbody> 
+</table>
 </div>
       
 

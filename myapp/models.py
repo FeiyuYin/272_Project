@@ -37,12 +37,15 @@ class Webapp(models.Model):
 	name = models.CharField(max_length = 200)
 	description = models.TextField()
 	user = models.ForeignKey(User)
-#	server = models.CharField(max_length = 200)
 	server = models.ManyToManyField(Server)
 	http_server = models.ForeignKey(Http_server)
 	language_needed = models.ManyToManyField(Language)
 	package_needed = models.ManyToManyField(Package)
 	source_file = models.FileField(upload_to = 'sourcefiles/%Y/%m/%d')
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+	last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+	url = models.URLField()
+
 #	source_file = models.OneToOneField(Document, blank=True)
 	
 	def __unicode__(self):

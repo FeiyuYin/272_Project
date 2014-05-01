@@ -1,0 +1,10 @@
+<html>
+	<body>
+		<h1>WebApps</h1>
+			{% for webapp in webapps%}
+				<div>
+					<h2><a href = "/features/displayapp/get/{{webapp.id}}/">{{webapp.name}}</a></h2>
+				</div>
+			{% endfor%}
+	</body>
+</html>

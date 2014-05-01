@@ -116,6 +116,7 @@ def deploy(request):
 		if form.is_valid():
 			webapp = form.save(commit = False)
 			webapp.user = request.user
+			webapp.url = "http://S1:80/index"
 			webapp.save()
 			form.save_m2m()
 			message = 'Webapp created successfully.'
@@ -133,7 +134,7 @@ def displayapps(request):
 #	for webapp in webapps:
 #		for server in webapp.server.all():
 #			message = message + server.name + ', '
-	return render_to_response('apps.html', {'logio':logio, 'logiourl':logiourl,'webapps': webapps})
+	return render_to_response('apps_new.html', {'logio':logio, 'logiourl':logiourl,'webapps': webapps})
 
 @login_required
 def displayapp(request, webapp_id ):

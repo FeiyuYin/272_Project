@@ -4,7 +4,7 @@
     "model": "myapp.http_server", 
     "fields": {
         "version": "1", 
-        "name": "Tomcat"
+        "name": "GlassFish"
     }
 },
 {
@@ -19,7 +19,7 @@
     "pk": 1, 
     "model": "myapp.language", 
     "fields": {
-        "version": "1.6", 
+        "version": "1.7", 
         "name": "Java"
     }
 },
@@ -40,11 +40,28 @@
     }
 },
 {
+    "pk": 2, 
+    "model": "myapp.package", 
+    "fields": {
+        "version": "1", 
+        "name": "Ant"
+    }
+},
+{
     "pk": 1, 
+    "model": "myapp.server", 
+    "fields": {
+        "load": "0.8", 
+        "os_type": "Ubuntu", 
+        "name": "S1"
+    }
+},
+{
+    "pk": 2, 
     "model": "myapp.server", 
     "fields": {
         "load": "1", 
         "os_type": "Ubuntu", 
-        "name": "S1"
+        "name": "S2"
     }
 }

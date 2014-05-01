@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
+     <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
    
     <style type="text/css">
       
@@ -119,8 +119,8 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-		<li class="active"><a href="#">Home</a></li>
-          	<li><a href="/features/displayapps/">MyWebApps</a></li>
+		<li><a href="/index/">Home</a></li>
+          	<li class="active"><a href="#">MyWebApps</a></li>
           	<li><a href="/features/deploy_start/">Deploy Webapp</a></li>
           	<li><a href="#">Upload</a></li>
           	<li><a href="#">About</a></li>
@@ -131,18 +131,29 @@
         </div><!-- /.navbar -->
       </div>
 
-	<div class="main-containers">
-	
-	<form action = "/accounts/auth/" class="form-signin" method = "post" >
-	<h2 class="form-signin-heading">Please log in</h2>
-	<input type="text" class="input-block-level" placeholder="User name" name = "user_name">
-	<input type="password" class="input-block-level" placeholder="Password" name = "user_password">
-	<button class="btn btn-large btn-primary" type="submit">Log in</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/accounts/register_start/"><font color="3366CC">Rgister</font></a>
-	</form>
-	</div>
-  
-
+	<div>
+         <h2>WebApps:</h2>
+	<table cellspacing="1" class="tablesorter">
+		    <thead>
+        		<tr>
+            		<th>Webapp name</th>
+            		<th>URL</th>
+            		<th>Create date</th>
+            		<th>Last modify date</th>
+        		</tr>
+    		    </thead>
+			<tbody>
+                        {% for webapp in webapps%}
+				<tr>
+            			<td><a href = "/features/displayapp/get/{{webapp.id}}/">{{webapp.name}}</a></td>
+            			<td><a>{{webapp.url}}</a></td>
+            			<td>{{webapp.create_date}}</td>
+            			<td>{{webapp.last_modify_date}}</td>
+        			</tr>
+                        {% endfor%}
+			</tbody>
+	</table>
+        </div>
 </div>
       
 
