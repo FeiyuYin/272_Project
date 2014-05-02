@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
+     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
    
     <style type="text/css">
       
@@ -146,7 +146,7 @@
                         {% for webapp in webapps%}
 				<tr>
             			<td><a href = "/features/displayapp/get/{{webapp.id}}/">{{webapp.name}}</a></td>
-            			<td><a>{{webapp.url}}</a></td>
+            			<td><a href = "{{webapp.url}}">{{webapp.url}}</a></td>
             			<td>{{webapp.create_date}}</td>
             			<td>{{webapp.last_modify_date}}</td>
         			</tr>
