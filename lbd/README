@@ -1,0 +1,31 @@
+Kernel needing
+==============
+
+  Linux kernel 2.6 and up
+
+Libraries dependency
+====================
+
+  None
+
+Installation
+============
+
+  1. uncompress the tarball
+  2. cd into the directory
+  3. 'autoconf' if no configure file in directory
+  4. './configure'
+  5. 'make'
+  6. binary transcontroller in directory bin
+
+
+  By default configure script use /usr/local as base directory. You can change
+  this value to your own by passing --prefix value to configure script
+
+  eg: './configure --prefix=/usr/'
+
+Configuration
+=============
+
+  no configuration required, but should run with salt master in same node.
+
