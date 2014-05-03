@@ -10,7 +10,10 @@
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
      <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
-   
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+<script src="/static/assets/js/reusable_chart.js"></script>  
+
     <style type="text/css">
       
       body {
@@ -131,7 +134,77 @@
         </div><!-- /.navbar -->
       </div>
 
-	<div>
+  	<div ng-app="charts">
+    <div ng-controller="mainCtrl">
+        <chart-form></chart-form>
+        <bar-chart height="options.height" data="data" hovered="hovered(args)"></bar-chart>
+        <!--<bar-chart height="300" data="data" hovered="hovered(args)></bar-chart>-->
+    </div>
+</div>
+	<script>
+
+    angular.module('charts', [])
+        .controller('mainCtrl', function AppCtrl ($scope) {
+            $scope.options = {width: 500, height: 300, 'bar': 'aaa'};
+            $scope.data = [0, 0, 0, 0];
+            $scope.hovered = function(d){
+                $scope.barValue = d;
+                $scope.$apply();
+            };
+            $scope.barValue = 'None';
+        })
+        .directive('barChart', function(){
+            var chart = d3.custom.barChart();
+            return {
+                restrict: 'E',
+                replace: true,
+                template: '<div class="chart"></div>',
+                scope:{
+                    height: '=height',
+                    data: '=data',
+                    hovered: '&hovered'
+                },
+                link: function(scope, element, attrs) {
+                    var chartEl = d3.select(element[0]);
+                    chart.on('customHover', function(d, i){
+                        scope.hovered({args:d});
+                    });
+
+                    scope.$watch('data', function (newVal, oldVal) {
+                        chartEl.datum(newVal).call(chart);
+                    });
+
+                    scope.$watch('height', function(d, i){
+                        chartEl.call(chart.height(scope.height));
+                    })
+                }
+            }
+        })
+        .directive('chartForm', function(){
+            return {
+                restrict: 'E',
+                replace: true,
+                controller: function AppCtrl ($scope) {
+                    $scope.update = function(d, i){ $scope.data = [100,20,30]};
+                    
+                },
+
+                template: '<div class="form">' +
+                        'Height: {{options.height}}<br />' +
+                        '<input type="range" ng-model="options.height" min="100" max="800"/>' +
+                        '<br />Node Viste statistics: {{barValue}}' +
+                        '<br/><button ng-click="update()">Update Data</button>' +
+                        '</div>'
+
+            }
+
+        });
+
+</script>
+
+</div>
+      
+<div>
         {{ webapp.name }}
         </div>
         <div>
@@ -164,10 +237,6 @@
 	<div>
         {{ webapp.last_modify_date }}
         </div>
-  
-
-</div>
-      
 
   
 
