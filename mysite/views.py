@@ -14,6 +14,7 @@ from myapp.forms import DocumentForm
 from myapp.forms import WebappForm
 from django.contrib.auth.decorators import login_required
 from time import gmtime, strftime
+import os
 import cgi
 import cgitb; cgitb.enable() 
 
@@ -119,6 +120,32 @@ def deploy(request):
 			webapp.url = "http://S1:80/index"
 			webapp.save()
 			form.save_m2m()
+			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
+			app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
+#			c = 'unzip ' + source_path + ' -d /home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.name) + '_'  + str(webapp.id)
+#			os.system(c)
+
+			c0 = 'sudo mkdir /srv/salt/172-31-38-144/' + app_dir_name
+			os.system(c0)
+
+			c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name
+			os.system(c1)
+			
+			source_dir_path_minion = '/var/www/' + app_dir_name
+			c_inner = "'mkdir " + source_dir_path_minion + "'"
+			c2 = "sudo salt \"*\" cmd.run " + c_inner
+			os.system(c2)
+
+
+			sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://172-31-38-144/" + app_dir_name + '/' + str(webapp.source_file)
+			
+			with open("/srv/salt/172-31-38-144/init.sls", "a") as f:
+			     f.write( "\n" + sls_config + "\n")			
+#			c3 = "sudo echo '" + sls_config + "' >> /srv/salt/172-31-38-144/init.sls"
+#			os.system(c3)			
+			c4 = "sudo salt '*' state.highstate"
+			os.system(c4)
+
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
@@ -141,7 +168,7 @@ def displayapp(request, webapp_id ):
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
-	return render_to_response('app.html', {'logio':logio, 'logiourl':logiourl, 'webapp': Webapp.objects.get(id = webapp_id)})
+	return render_to_response('app_new.html', {'logio':logio, 'logiourl':logiourl, 'webapp': Webapp.objects.get(id = webapp_id)})
 
 def select(request):
 	hs1 = 'Apache'
