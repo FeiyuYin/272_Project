@@ -146,6 +146,11 @@ def deploy(request):
 			c4 = "sudo salt '*' state.highstate"
 			os.system(c4)
 
+			c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "'"
+			os.system(c5)
+
+			webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/source/index.html"
+			webapp.save()
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
