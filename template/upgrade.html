@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
+     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
    
     <style type="text/css">
       
@@ -120,8 +121,8 @@
               <ul class="nav">
 		<li><a href="/index/">Home</a></li>
           	<li><a href="/features/displayapps/">MyWebApps</a></li>
-          	<li class="active"><a href="#">Deploy Webapp</a></li>
-          	<li><a href="#">Upgrade Webapp</a></li>
+          	<li><a href="/features/deploy_start/">Deploy Webapp</a></li>
+          	<li class="active"><a href="#">Upgrade Webapp</a></li>
           	<li><a href="#">About</a></li>
           	<li><a href="#">Contact</a></li>
               </ul>
@@ -130,58 +131,19 @@
         </div><!-- /.navbar -->
       </div>
 
-		<table width="100%">
-			<form action = "/features/deploy/" class="form-signin" method = "post" enctype="multipart/form-data">
-				{{ form.non_field_errors }}
-				<tr>
-					<td width="50%">
-						<div>
-							{{ form.name.errors }}
-							<label>Webapp Name:</label>
-							{{form.name}}
-						</div>
-						<div>
-							{{ form.description.errors }}
-							<label>Description:</label>
-							{{form.description}}
-						</div>
-						<div>
-							{{ form.server.errors }}
-							<label>Choose Server:</label>
-							{{form.server}}
-						</div>
-						<div>
-							{{ form.http_server.errors }}
-							<label>Choose Http Server:</label>
-							{{form.http_server}}
-						</div>
-						</td>
-						<td>
-						<div>
-							{{ form.language_needed.errors }}
-							<label>Choose Languages:</label>
-							{{form.language_needed}}
-						</div>
-						<div>
-							{{form.package_needed.errors}}
-							<label>Choose Packages:</label>
-							{{form.package_needed}}
-						</div>
-						<div>
-							{{form.source_file.error}}
-							<label>Upload source file:</label>
-							{{form.source_file}}
-						</div> 
-						<br>
-						<br>
-						<br>
-						<br>
-						<div>
-							<button class="btn btn-large btn-primary" type="submit">Depoly</button>
-						</div>
-					</td>
-				</tr>
-        		</form>
+	<div class="main-containers">
+
+        <form action = "/features/upgrade/" class="form-signin" method = "post" enctype="multipart/form-data">
+        <h2 class="form-signin-heading">Upload file</h2>
+	<div>
+             <label>Upload source file:</label>
+             {{ form.s_file }}
+        </div>
+        <button class="btn btn-large btn-primary" type="submit">Upload</button>
+        </form>
+        </div>
+  
+
 </div>
       
 

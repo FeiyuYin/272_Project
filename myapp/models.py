@@ -2,12 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms.extras.widgets import SelectDateWidget
 
-class Document(models.Model):
-	docfile = models.FileField(upload_to='documents/%Y/%m/%d')
-	name  = models.CharField(max_length = 200)
-	def __unicode__(self):
-		return self.name
-
+#class Document(models.Model):
+#	docfile = models.FileField(upload_to='documents/%Y/%m/%d')
+#	name  = models.CharField(max_length = 200)
+#	def __unicode__(self):
+#		return self.name
 
 class Http_server(models.Model):
 	name = models.CharField(max_length = 200)
@@ -48,9 +47,7 @@ class Webapp(models.Model):
 	last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
 	url = models.URLField()
 	num_ver = models.IntegerField()
-
 #	source_file = models.OneToOneField(Document, blank=True)
-	
 	def __unicode__(self):
                  return self.name
 
