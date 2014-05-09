@@ -1,5 +1,0 @@
-#! /usr/bin/python2
-import salt.client
-local = salt.client.LocalClient()
-local.cmd('*', 'test.ping')
-print('a')

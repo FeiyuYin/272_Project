@@ -8,6 +8,7 @@ class Document(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
 class Http_server(models.Model):
 	name = models.CharField(max_length = 200)
         version = models.DecimalField(max_digits=6, decimal_places=3)
@@ -42,12 +43,23 @@ class Webapp(models.Model):
 	language_needed = models.ManyToManyField(Language)
 	package_needed = models.ManyToManyField(Package)
 #	source_file = models.FileField(upload_to = 'sourcefiles/%Y/%m/%d')
-	source_file = models.FileField(upload_to = '')
+	source_file = models.FileField(upload_to = '.')
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
 	last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
 	url = models.URLField()
+	num_ver = models.IntegerField()
 
 #	source_file = models.OneToOneField(Document, blank=True)
 	
+	def __unicode__(self):
+                 return self.name
+
+class Source(models.Model):
+	name = models.CharField(max_length = 200)
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+        last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+        s_file = models.FileField(upload_to='.')
+        is_valid = models.BooleanField()
+        webapp = models.ForeignKey(Webapp)
 	def __unicode__(self):
                  return self.name

@@ -10,7 +10,9 @@ from django.db import models
 from myapp.models import Document
 from myapp.models import Server
 from myapp.models import Webapp
+from myapp.models import Source
 from myapp.forms import DocumentForm
+#from myapp.forms import SourceForm
 from myapp.forms import WebappForm
 from django.contrib.auth.decorators import login_required
 from time import gmtime, strftime
@@ -117,44 +119,56 @@ def deploy(request):
 		if form.is_valid():
 			webapp = form.save(commit = False)
 			webapp.user = request.user
-			webapp.url = "http://S1:80/index"
+			webapp.url = ""
+			webapp.num_ver = 1
 			webapp.save()
 			form.save_m2m()
+
+			source = Source()
+                        source.name = str(webapp.name) + '_'  + str(webapp.id) + '_' + str(webapp.num_ver)
+                        source.webapp = webapp
+                        source.is_valid = True
+                        source.s_file = webapp.source_file
+                        source.save()			
+
 			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
 			app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
-#			c = 'unzip ' + source_path + ' -d /home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.name) + '_'  + str(webapp.id)
-#			os.system(c)
+			ver_dir_name = source.name
 
-			c0 = 'sudo mkdir /srv/salt/172-31-38-144/' + app_dir_name
+			c0 = 'sudo mkdir -p /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
 			os.system(c0)
 
-			c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name
+			c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
 			os.system(c1)
 			
-			source_dir_path_minion = '/var/www/' + app_dir_name
-			c_inner = "'mkdir " + source_dir_path_minion + "'"
+			source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
+			c_inner = "'mkdir -p " + source_dir_path_minion + "'"
 			c2 = "sudo salt \"*\" cmd.run " + c_inner
 			os.system(c2)
 
 
-			sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://172-31-38-144/" + app_dir_name + '/' + str(webapp.source_file)
+			sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://172-31-38-144/" + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file)
 			
 			with open("/srv/salt/172-31-38-144/init.sls", "a") as f:
 			     f.write( "\n" + sls_config + "\n")			
-#			c3 = "sudo echo '" + sls_config + "' >> /srv/salt/172-31-38-144/init.sls"
-#			os.system(c3)			
+
 			c4 = "sudo salt '*' state.highstate"
 			os.system(c4)
 
-			c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "'"
+			c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
 			os.system(c5)
 
-			webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/source/index.html"
+			webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
 			webapp.save()
+
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
 			return render_to_response('deploy_new.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
+
+@login_required
+def upgrade(request):
+	
 
 @login_required
 def displayapps(request):

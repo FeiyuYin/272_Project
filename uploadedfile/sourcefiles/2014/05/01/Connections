@@ -1,3 +1,0 @@
-ssh -i ubuntu_master.pem ubuntu@
-ssh -i ubuntu_minion.pem ubuntu@
-ssh -i ubuntu_minion2.pem ubuntu@

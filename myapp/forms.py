@@ -14,6 +14,11 @@ class DocumentForm(forms.Form):
 		fields = ('docfile')
 	docfile = forms.FileField(label='Select a file')
 
+#class SourceForm(forms.Form):
+#        class Meta:
+#                model = Source_file
+#	fields = ('s_file')
+
 class WebappForm(ModelForm):
 	language_needed = forms.ModelMultipleChoiceField(queryset=Language.objects.all(), widget=forms.CheckboxSelectMultiple(),required=True)
 	package_needed = forms.ModelMultipleChoiceField(queryset=Package.objects.all(),widget=forms.CheckboxSelectMultiple(),required=True)
