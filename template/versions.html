@@ -131,31 +131,31 @@
         </div><!-- /.navbar -->
       </div>
 
-	<div>
-         <h2>WebApps:</h2>
-	<table cellspacing="1" class="tablesorter">
-		    <thead>
-        		<tr>
-            		<th>Webapp name</th>
-            		<th>URL</th>
-            		<th>Created date</th>
-            		<th>Last modified date</th>
-        		</tr>
-    		    </thead>
-			<tbody>
-                        {% for webapp in webapps%}
-				<tr>
-            			<td><a href = "/features/displayapp/get/{{webapp.id}}/">{{webapp.name}}</a></td>
-            			<td><a href = "{{webapp.url}}">{{webapp.url}}</a></td>
-            			<td>{{webapp.create_date}}</td>
-            			<td>{{webapp.last_modify_date}}</td>
-            			<td><a href = "/features/upgrade_start/get/{{webapp.id}}/">Upgrade</td>
-            			<td><a href = "/features/view_versions/get/{{webapp.id}}/">Versions</td>
-        			</tr>
+<div>
+         <h2>Old Versions:</h2>
+        <table cellspacing="1" class="tablesorter">
+                    <thead>
+                        <tr>
+                        <th>Version Name</th>
+                        <th>Created date</th>
+                        <th>Last modified date</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        {% for s in sources%}
+                                <tr>
+                                <td>{{s.name}}</td>
+                                <td>{{s.create_date}}</td>
+                                <td>{{s.last_modify_date}}</td>
+                                <td><a href = "/features/switch_to/get/{{s.id}}/">Switch To</td>
+                                </tr>
                         {% endfor%}
-			</tbody>
-	</table>
+                        </tbody>
+        </table>
         </div>
+
+  
+
 </div>
       
 

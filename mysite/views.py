@@ -186,7 +186,7 @@ def upgrade(request):
 		webapp = Webapp.objects.get(id = request.session['webapp_id'])
 		webapp.num_ver = webapp.num_ver + 1
 		for s in webapp.source_set.all():
-                        	s.isvalid = False
+                        	s.is_valid = False
                         	s.save()
 
 		if form.is_valid():
@@ -237,6 +237,42 @@ def upgrade(request):
 		form = SourceForm()
 #	return render_to_response('upgrade.html', {'form': form})
 	return render_to_response('upgrade.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
+
+@login_required
+def view_versions(request, webapp_id):
+	username = request.user.username
+        logio = 'Hi, ' + username + '. Click here to log out.'
+        logiourl = '/accounts/logout/'
+
+	webapp = Webapp.objects.get(id = webapp_id)
+	sources = []
+	for s in webapp.source_set.all():
+		if not s.is_valid:
+			sources.append(s)
+	
+	return render_to_response('versions.html', {'sources': sources, 'logio':logio, 'logiourl':logiourl})
+
+@login_required
+def switch_to(request, source_id):
+	username = request.user.username
+        logio = 'Hi, ' + username + '. Click here to log out.'
+        logiourl = '/accounts/logout/'
+
+	source = Source.objects.get(id = source_id)
+	webapp = source.webapp
+	for s in webapp.source_set.all():
+		s.is_valid = False
+		s.save()
+	source.is_valid = True
+	source.save()
+	webapp.source_file = source.s_file
+
+	app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
+        ver_dir_name = source.name
+	webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+	webapp.save()
+
+	return render_to_response('show_message.html', {'message' : 'Switch Successfully', 'logio':logio, 'logiourl':logiourl})
 
 @login_required
 def displayapps(request):
