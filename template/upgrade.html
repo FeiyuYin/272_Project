@@ -127,9 +127,6 @@
 		<li><a href="/index/">Home</a></li>
           	<li><a href="/features/displayapps/">MyWebApps</a></li>
           	<li><a href="/features/deploy_start/">Deploy Webapp</a></li>
-          	<li class="active"><a href="#">Upgrade Webapp</a></li>
-          	<li><a href="#">About</a></li>
-          	<li><a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -143,6 +140,10 @@
 	<div>
              <label>Upload source file:</label>
              {{ form.s_file }}
+        </div>
+	<div>
+             <label>Enter description:</label>
+             {{ form.description }}
         </div>
         <button class="btn btn-large btn-primary" type="submit">Upgrade</button>
         </form>

@@ -7,24 +7,14 @@ from django.template import Context
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db import models
-#from myapp.models import Document
 from myapp.models import Server
 from myapp.models import Webapp
 from myapp.models import Source
-#from myapp.forms import DocumentForm
 from myapp.forms import SourceForm
 from myapp.forms import WebappForm
 from django.contrib.auth.decorators import login_required
 from time import gmtime, strftime
 import os
-import cgi
-import cgitb; cgitb.enable() 
-
-#class Document(models.Model):
-#    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
-
-#class DocumentForm(forms.Form):
-#    docfile = forms.FileField(label='Select a file')
 
 def index(request):
 	if request.user.is_authenticated():
@@ -66,7 +56,6 @@ def auth_view(request):
 		message = 'Authenticte failed!'
 		logio = 'Hi, Click here to log in.'
                 logiourl = '/accounts/login/'
-#	return render_to_response('cmp_auth.html', {'message' : message})
 	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl})
 
 def logout(request):
@@ -129,11 +118,20 @@ def deploy(request):
                         source.webapp = webapp
                         source.is_valid = True
                         source.s_file = webapp.source_file
+                        source.description = webapp.description
                         source.save()			
 
-			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
 			app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
-			ver_dir_name = source.name
+                        ver_dir_name = source.name
+			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
+#			c_2 = 'mkdir -p /home/ubuntu/django_test/mysite/uploadedfile/' + app_dir_name + '/' + ver_dir_name
+#			os.system(c_2)
+			
+#			c_3 = 'cp /home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file) + ' /home/ubuntu/django_test/mysite/uploadedfile/' + app_dir_name + '/' + ver_dir_name
+#			os.system(c_3)
+			
+#			c_1 = 'unzip ' + uploaded_source_path + ' -d /home/ubuntu/django_test/mysite/uploadedfile/'
+#			os.system(c_1)
 
 			c0 = 'sudo mkdir -p /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
 			os.system(c0)
@@ -141,6 +139,12 @@ def deploy(request):
 			c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
 			os.system(c1)
 			
+			c_2 = 'sudo unzip /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file) + ' -d /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
+			os.system(c_2)
+
+			c_1 = 'sudo chown -R www-data:www-data /srv/salt/'
+                        os.system(c_1)
+
 			source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
 			c_inner = "'mkdir -p " + source_dir_path_minion + "'"
 			c2 = "sudo salt \"*\" cmd.run " + c_inner
@@ -158,13 +162,35 @@ def deploy(request):
 			c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
 			os.system(c5)
 
-			webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+			for pkg in webapp.package_needed.all():
+                                package_shooter(pkg, webapp)
+
+			os.system(c4)
+
+#			webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.hmtml"
+			c6 = "sudo salt '*' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'"
+			webapp.url = 'http://54.186.171.250:' + str(27202)
 			webapp.save()
 
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
 			return render_to_response('deploy_new.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
+
+def package_shooter(pkg, wa):
+	app_dir_name = str(wa.name) + '_'  + str(wa.id)
+	ver_dir_name = str(wa.name) + '_'  + str(wa.id) + '_' + str(wa.num_ver)
+
+	if pkg.name == 'npm':
+                sls_config = pkg.name + ':\n pkg:\n  - installed'
+        elif pkg.name == 'ejb' or pkg.name == 'express':
+                sls_config = pkg.name + ':\n npm:\n  - installed\n  - dir: /var/www/' + app_dir_name + '/' + ver_dir_name + '/' + (str(wa.source_file).split('.zip')[0])
+
+	for server in wa.server.all():
+		dir_name = '/srv/salt/' + server.pr_ip + '/init.sls'
+		with open(dir_name, "a") as f:
+                             f.write( "\n" + sls_config + "\n")
+
 
 @login_required
 def upgrade_start(request, webapp_id):
@@ -199,11 +225,12 @@ def upgrade(request):
 			source.save()
 					
 			webapp.source_file = source.s_file
+			webapp.description = source.description
 			app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
         	        ver_dir_name = source.name
 			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
 
-			webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+			webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
 			webapp.save()
 
 			c0 = 'sudo mkdir -p /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
@@ -211,6 +238,12 @@ def upgrade(request):
 
                         c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
                         os.system(c1)
+
+			c_2 = 'sudo unzip /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file) + ' -d /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
+                        os.system(c_2)
+
+                        c_1 = 'sudo chown -R www-data:www-data /srv/salt/'
+                        os.system(c_1)
 
                         source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
                         c_inner = "'mkdir -p " + source_dir_path_minion + "'"
@@ -235,7 +268,6 @@ def upgrade(request):
 
 	else:
 		form = SourceForm()
-#	return render_to_response('upgrade.html', {'form': form})
 	return render_to_response('upgrade.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
 
 @login_required
@@ -266,10 +298,11 @@ def switch_to(request, source_id):
 	source.is_valid = True
 	source.save()
 	webapp.source_file = source.s_file
+	webapp.description = source.description
 
 	app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
         ver_dir_name = source.name
-	webapp.url = 'http://ec2-54-187-154-213.us-west-2.compute.amazonaws.com/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+#	webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
 	webapp.save()
 
 	return render_to_response('show_message.html', {'message' : 'Switch Successfully', 'logio':logio, 'logiourl':logiourl})
@@ -291,7 +324,22 @@ def displayapp(request, webapp_id ):
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
-	return render_to_response('app_new.html', {'logio':logio, 'logiourl':logiourl, 'webapp': Webapp.objects.get(id = webapp_id)})
+	
+	webapp = Webapp.objects.get(id = webapp_id)
+	for s in webapp.source_set.all():
+		if s.is_valid == True:
+			source = s
+	app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
+        ver_dir_name = source.name
+	path = '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
+
+	data = []
+	data.append(['Server', 'Load'])
+	data.append(['S1', 100])
+	data.append(['S2', 300])
+	data.append(['S3', 200])
+
+	return render_to_response('app_new.html', {'logio':logio, 'logiourl':logiourl, 'webapp': webapp, 'data' : data, 'path' : path})
 
 def select(request):
 	hs1 = 'Apache'

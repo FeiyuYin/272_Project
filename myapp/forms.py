@@ -18,7 +18,7 @@ from django.forms import CheckboxSelectMultiple
 class SourceForm(ModelForm):
 	class Meta:
 		model = Source
-		fields = ('s_file',)
+		fields = ('s_file', 'description')
 
 class WebappForm(ModelForm):
 	language_needed = forms.ModelMultipleChoiceField(queryset=Language.objects.all(), widget=forms.CheckboxSelectMultiple(),required=True)
@@ -26,4 +26,4 @@ class WebappForm(ModelForm):
 	server = forms.ModelMultipleChoiceField(queryset=Server.objects.all(),widget=forms.CheckboxSelectMultiple(),required=True)
 	class Meta:
 		model = Webapp
-		fields = ('name', 'description', 'server', 'http_server', 'language_needed', 'package_needed', 'source_file')
+		fields = ('name', 'description', 'server', 'http_server', 'language_needed', 'package_needed', 'source_file', 'entry')

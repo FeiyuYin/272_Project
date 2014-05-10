@@ -29,6 +29,8 @@ class Package(models.Model):
 class Server(models.Model):
 	name = models.CharField(max_length = 200)
 	os_type = models.CharField(max_length = 200)
+	pr_ip = models.CharField(max_length = 200)
+	pu_ip = models.CharField(max_length = 200)
 	load = models.DecimalField(max_digits=6, decimal_places=3)
 	def __unicode__(self):
                 return self.name
@@ -47,12 +49,15 @@ class Webapp(models.Model):
 	last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
 	url = models.URLField()
 	num_ver = models.IntegerField()
+#	port = models.IntegerField(blank=True, null=True)
+	entry = models.CharField(max_length = 200)
 #	source_file = models.OneToOneField(Document, blank=True)
 	def __unicode__(self):
                  return self.name
 
 class Source(models.Model):
 	name = models.CharField(max_length = 200)
+	description = models.TextField()
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
         last_modify_date = models.DateTimeField(auto_now=True, auto_now_add=False)
         s_file = models.FileField(upload_to='.')

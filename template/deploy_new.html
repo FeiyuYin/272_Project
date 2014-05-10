@@ -121,9 +121,6 @@
 		<li><a href="/index/">Home</a></li>
           	<li><a href="/features/displayapps/">MyWebApps</a></li>
           	<li class="active"><a href="#">Deploy Webapp</a></li>
-          	<li><a href="#">Upgrade Webapp</a></li>
-          	<li><a href="#">About</a></li>
-          	<li><a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -167,11 +164,16 @@
 							<label>Choose Packages:</label>
 							{{form.package_needed}}
 						</div>
+						 <div>
+                                                        {{form.entry.error}}
+                                                        <label>Webapp entry file:</label>
+                                                        {{form.entry}}
+                                                </div>
 						<div>
-							{{form.source_file.error}}
-							<label>Upload source file:</label>
-							{{form.source_file}}
-						</div> 
+                                                        {{form.source_file.error}}
+                                                        <label>Upload source file:</label>
+                                                        {{form.source_file}}
+                                                </div>
 						<br>
 						<br>
 						<br>
