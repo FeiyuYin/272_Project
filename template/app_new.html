@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="/static/assets/js/reusable_chart.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
@@ -104,7 +103,7 @@
       
       .Tree{
         width: 200px;
-        height: 400px;
+        height: 250px;
         border-top: solid 1px #BBB;
         border-left: solid 1px #BBB;
         border-bottom: solid 1px #FFF;
@@ -161,7 +160,7 @@
 
 				   {title:"Network Load",
 
-					width:600, height:400,
+					width:600, height:300,
 
 					vAxis: {title: "KBps"},
 
@@ -196,14 +195,12 @@
           </div>
         </div><!-- /.navbar -->
   <div>
-         <h2>{{webapp.name}}</h2>
   <table cellspacing="1" class="tablesorter">
         <thead>
             <tr>
                 <th>Http_Server</th>
                 <th>Language Required</th>
                 <th>Package Required</th>
-                <th>Port Number</th>
             </tr>
             </thead>
      <tbody>
@@ -215,7 +212,6 @@
       <td> {% for package in webapp.package_needed.all %}
         {{ package.name }}
         {% endfor%}</td>
-        <td>{{webapp.port}}</td>
      </tbody>
   </table>
   

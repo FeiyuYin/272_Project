@@ -19,23 +19,27 @@ import os
 def index(request):
 	if request.user.is_authenticated():
                 username = request.user.username
+		class_p = ''
                 logio = 'Hi, ' + username + '. Click here to log out.'
                 logiourl = '/accounts/logout/'
         else:
                 logio = 'Hi, Click here to log in.'
-                logiourl = '/accounts/login/'
-	return render_to_response('index.html', {'logio':logio, 'logiourl':logiourl})
+                logiourl = '#modal1'
+		class_p = 'modalLink'
+	return render_to_response('index.html', {'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 
 def login(request):
 	if request.user.is_authenticated():
 		username = request.user.username
+		class_p = ''
 		logio = 'Hi, ' + username + '. Click here to log out.'
 		logiourl = '/accounts/logout/'
-		return render_to_response('login.html', {'logio':logio, 'logiourl':logiourl})
+		return render_to_response('login.html', {'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 	else:
 		logio = 'Hi, Click here to log in.'
-                logiourl = '/accounts/login/'
-                return render_to_response('login.html', {'logio':logio, 'logiourl':logiourl})
+		logiourl = '#modal1'
+		class_p = 'modalLink'
+                return render_to_response('login.html', {'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 
 def auth_view(request):
     	username = request.POST['user_name']
@@ -48,37 +52,41 @@ def auth_view(request):
 			username = request.user.username
                 	logio = 'Hi, ' + username + '. Click here to log out.'
                 	logiourl = '/accounts/logout/'
+			class_p = ''
         	else:
 			message = 'User is inactive!'
 			logio = 'Hi, Click here to log in.'
-                	logiourl = '/accounts/login/'
+                	logiourl = '#modal1'
+			class_p = 'modalLink'
+			
     	else:
 		message = 'Authenticte failed!'
 		logio = 'Hi, Click here to log in.'
-                logiourl = '/accounts/login/'
-	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl})
+                logiourl = '#modal1'
+		class_p = 'modalLink'
+	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl, 'class_p': class_p})
 
 def logout(request):
-	if request.user.is_authenticated():
-		auth.logout(request)
-		message = 'Log out successfully'
-	else:
-		message = 'You are not logged in!'
+	auth.logout(request)
 	logio = 'Hi, Click here to log in.'
-        logiourl = '/accounts/login/'
-	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl})
+        logiourl = '#modal1'
+        class_p = 'modalLink'
+	message = 'Logout Successfully'
+	return render_to_response('show_message.html', {'message' : message ,'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 
 def register_start(request):
 	if request.user.is_authenticated():
 		message = 'You are already logged in!'
 		logio = 'Hi, ' + username + '. Click here to log out.'
                 logiourl = '/accounts/logout/'
-		return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl})
+		class_p = ''
+		return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 	else:
 		form = UserCreationForm()
 		logio = 'Hi, Click here to log in.'
-                logiourl = '/accounts/login/'
-		return render_to_response('register.html', {'form' : form, 'logio':logio, 'logiourl':logiourl})
+                logiourl = '#modal1'
+		class_p = 'modalLink'
+		return render_to_response('register.html', {'form' : form, 'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 
 def register(request):
 	form = UserCreationForm(request.POST)
@@ -89,7 +97,9 @@ def register(request):
 		message = 'Register failed'
 	logio = 'Hi, Click here to log in.'
         logiourl = '/accounts/login/'
-	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl})
+	logiourl = '#modal1'
+        class_p = 'modalLink'
+	return render_to_response('show_message.html', {'message' : message, 'logio':logio, 'logiourl':logiourl, 'class_p' : class_p})
 	
 @login_required
 def deploy_start(request):
@@ -202,14 +212,14 @@ def upgrade_start(request, webapp_id):
         return render_to_response('upgrade.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
 
 @login_required
-def upgrade(request):
+def upgrade(request, webapp_id):
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
 
 	if request.method == 'POST':
 		form = SourceForm(request.POST, request.FILES)	
-		webapp = Webapp.objects.get(id = request.session['webapp_id'])
+		webapp = Webapp.objects.get(id = webapp_id)
 		webapp.num_ver = webapp.num_ver + 1
 		for s in webapp.source_set.all():
                         	s.is_valid = False
@@ -317,7 +327,8 @@ def displayapps(request):
 #	for webapp in webapps:
 #		for server in webapp.server.all():
 #			message = message + server.name + ', '
-	return render_to_response('apps_new.html', {'logio':logio, 'logiourl':logiourl,'webapps': webapps})
+	form = SourceForm()
+	return render_to_response('apps_new.html', {'logio':logio, 'logiourl':logiourl,'webapps': webapps, 'form': form})
 
 @login_required
 def displayapp(request, webapp_id ):

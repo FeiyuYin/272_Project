@@ -3,14 +3,21 @@
 <html>
 <head>
   
-   
+ <link rel="stylesheet" href="/static/assets/css/jq.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />   
+<link rel="stylesheet" type="text/css" href="/static/assets/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/static/assets/css/main.css">
+
  <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
-   <link rel="stylesheet" href="/static/assets/css/jq.css" type="text/css"/>
-    <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
+
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
-   
+
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type='text/javascript' src='/static/assets/js/jquery.modal.js'></script>
+    <script type='text/javascript' src='/static/assets/js/site.js'></script>
+  
+
     <style type="text/css">
       
       body {
@@ -28,9 +35,15 @@
         margin: 60px 0;
       }
 
+	.form-signin{
+        margin-left:auto;
+        margin-right:auto;
+        max-width: 200px;
+        }
+
       /* Main marketing message and sign up button */
       .jumbotron {
-        margin: 80px 0;
+        margin: 40px 0;
         text-align: center;
       }
       .jumbotron h1 {
@@ -88,6 +101,17 @@
         border-radius: 0 3px 3px 0;
       }
 
+.modal {
+  display: none;
+  background: #eee;
+  position: absolute;
+  padding: 0 20px 20px;
+  overflow: auto;
+  z-index: 1001;
+  width: 350px;
+  min-height: 300px;
+  margin-left: 30px;
+}
       /* tables */
 
     </style>
@@ -113,7 +137,7 @@
     <div class="container">
 
       <div class="masthead">
-        <h3 class="muted">Cloud Deploy Platform</h3>
+        <h3 align = "left" class="muted">Cloud Deploy Platform</h3>
 	<p align="right"><a href = "{{ logiourl }}">{{ logio }}</a></p>
         <div class="navbar">
           <div class="navbar-inner">
@@ -146,8 +170,29 @@
             			<td><a href = "{{webapp.url}}">{{webapp.url}}</a></td>
             			<td>{{webapp.create_date}}</td>
             			<td>{{webapp.last_modify_date}}</td>
-            			<td><a href = "/features/upgrade_start/get/{{webapp.id}}/">Upgrade</td>
+            			<td><a a class = "modalLink" href = "#{{webapp.id}}">Upgrade</td>
             			<td><a href = "/features/view_versions/get/{{webapp.id}}/">Versions</td>
+				<div class="overlay"></div>
+
+    <div id="{{webapp.id}}" class="modal" >
+
+           <p class="closeBtn">Close</p>
+
+  <br><br>
+
+ <form action = "/features/upgrade/get/{{webapp.id}}/" class="form-signin" method = "post" enctype="multipart/form-data">
+        <h2 class="form-signin-heading">Upload file</h2>
+        <div>
+             {{ form.s_file }}
+        </div>
+        <div>
+             <label>Description:</label>
+             {{ form.description }}
+        </div>
+        <button class="btn btn-large btn-primary" type="submit">Upgrade</button>
+        </form>
+    </div>
+
         			</tr>
                         {% endfor%}
 			</tbody>
@@ -155,7 +200,4 @@
         </div>
 </div>
       
-
-  
-
 </body></html>
