@@ -32,6 +32,8 @@ class Server(models.Model):
 	pr_ip = models.CharField(max_length = 200)
 	pu_ip = models.CharField(max_length = 200)
 	load = models.DecimalField(max_digits=6, decimal_places=3)
+	salt_name = models.CharField(max_length = 200)
+	is_up = models.BooleanField()
 	def __unicode__(self):
                 return self.name
 

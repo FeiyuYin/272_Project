@@ -15,7 +15,10 @@ from myapp.forms import WebappForm
 from django.contrib.auth.decorators import login_required
 from time import gmtime, strftime
 import os
+import thread, time, socket, struct
 
+#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+#sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 def index(request):
 	if request.user.is_authenticated():
                 username = request.user.username
@@ -132,60 +135,83 @@ def deploy(request):
                         source.save()			
 
 			app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
-                        ver_dir_name = source.name
+        		ver_dir_name = app_dir_name + '_' + str(webapp.num_ver)
 			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
-#			c_2 = 'mkdir -p /home/ubuntu/django_test/mysite/uploadedfile/' + app_dir_name + '/' + ver_dir_name
-#			os.system(c_2)
-			
-#			c_3 = 'cp /home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file) + ' /home/ubuntu/django_test/mysite/uploadedfile/' + app_dir_name + '/' + ver_dir_name
-#			os.system(c_3)
-			
-#			c_1 = 'unzip ' + uploaded_source_path + ' -d /home/ubuntu/django_test/mysite/uploadedfile/'
-#			os.system(c_1)
 
-			c0 = 'sudo mkdir -p /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-			os.system(c0)
+			for s in webapp.server.all():
+				config_dir(s, webapp)
 
-			c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-			os.system(c1)
-			
-			c_2 = 'sudo unzip /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file) + ' -d /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-			os.system(c_2)
-
-			c_1 = 'sudo chown -R www-data:www-data /srv/salt/'
-                        os.system(c_1)
-
-			source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
-			c_inner = "'mkdir -p " + source_dir_path_minion + "'"
-			c2 = "sudo salt \"*\" cmd.run " + c_inner
-			os.system(c2)
-
-
-			sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://172-31-38-144/" + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file)
-			
-			with open("/srv/salt/172-31-38-144/init.sls", "a") as f:
-			     f.write( "\n" + sls_config + "\n")			
+			c1_5 = 'sudo rm ' + uploaded_source_path
+			os.system(c1_5)
 
 			c4 = "sudo salt '*' state.highstate"
 			os.system(c4)
 
-			c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
-			os.system(c5)
+			for s in webapp.server.all():
+				c5 = "sudo salt '" + s.salt_name + "' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
+				os.system(c5)
 
 			for pkg in webapp.package_needed.all():
                                 package_shooter(pkg, webapp)
 
 			os.system(c4)
+			
+			for s in webapp.server.all():
+				c5_1 = "sudo salt '" + s.salt_name + "' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ; npm install'" 
+				os.system(c5_1)
 
-#			webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.hmtml"
-			c6 = "sudo salt '*' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'"
-			webapp.url = 'http://54.186.171.250:' + str(27202)
+			for s in webapp.server.all():
+				c6 = "sudo salt '"+ s.salt_name +"' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ;nodejs " + webapp.entry + "'&"
+				os.system(c6)
+
+			webapp.url = 'http://54.187.149.192:' + str(27202)
 			webapp.save()
 
+			sock = init_socket()
+			stat = {}
+                        ips = get_server_ips(webapp)
+
+                        data0 = ''
+                        data0 = make_info(data0, 0, len(ips), ips, 27202)
+                        sock.send(data0)
+
+#			sock.shutdown(socket.SHUT_RDWR)
+			sock.close()
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
 			return render_to_response('deploy_new.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
+
+def config_dir(s, webapp):
+	sn = s.pr_ip
+	app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
+        ver_dir_name = app_dir_name + '_' + str(webapp.num_ver)
+
+	uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
+
+	c0 = 'sudo mkdir -p /srv/salt/' + sn + '/' + app_dir_name + '/' + ver_dir_name
+	os.system(c0)
+
+	c1 = 'sudo cp ' + uploaded_source_path + ' /srv/salt/'+ sn + '/' + app_dir_name + '/' + ver_dir_name
+	os.system(c1)
+	
+	c_2 = 'sudo unzip /srv/salt/' + sn + '/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file) + ' -d /srv/salt/' + sn + '/' + app_dir_name + '/' + ver_dir_name
+	os.system(c_2)
+
+	c_1 = 'sudo chown -R www-data:www-data /srv/salt/'
+        os.system(c_1)
+
+	source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
+	c_inner = "'mkdir -p " + source_dir_path_minion + "'"
+	c2 = "sudo salt '" + s.salt_name+ "' cmd.run " + c_inner
+	os.system(c2)
+
+	sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://" + sn + '/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file)
+	sls_file_dir = "/srv/salt/" + sn + '/' + "init.sls"
+			
+	with open(sls_file_dir, "a") as f:
+	     f.write( "\n" + sls_config + "\n")
+
 
 def package_shooter(pkg, wa):
 	app_dir_name = str(wa.name) + '_'  + str(wa.id)
@@ -196,8 +222,8 @@ def package_shooter(pkg, wa):
         elif pkg.name == 'ejb' or pkg.name == 'express':
                 sls_config = pkg.name + ':\n npm:\n  - installed\n  - dir: /var/www/' + app_dir_name + '/' + ver_dir_name + '/' + (str(wa.source_file).split('.zip')[0])
 
-	for server in wa.server.all():
-		dir_name = '/srv/salt/' + server.pr_ip + '/init.sls'
+	for s in wa.server.all():
+		dir_name = '/srv/salt/' + s.pr_ip + '/init.sls'
 		with open(dir_name, "a") as f:
                              f.write( "\n" + sls_config + "\n")
 
@@ -213,6 +239,9 @@ def upgrade_start(request, webapp_id):
 
 @login_required
 def upgrade(request, webapp_id):
+	sock = init_socket()
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Upgrade: Socket init successfully.' + "\n")
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
@@ -240,37 +269,99 @@ def upgrade(request, webapp_id):
         	        ver_dir_name = source.name
 			uploaded_source_path = '/home/ubuntu/django_test/mysite/uploadedfile/' + str(webapp.source_file)
 
-			webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+#			webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
+			webapp.url = 'http://54.187.149.192:' + str(27202)
 			webapp.save()
 
-			c0 = 'sudo mkdir -p /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-                        os.system(c0)
+			for s in webapp.server.all():
+				config_dir(s, webapp)
 
-                        c1 = 'sudo cp ' + uploaded_source_path + ' ' + '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-                        os.system(c1)
-
-			c_2 = 'sudo unzip /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file) + ' -d /srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
-                        os.system(c_2)
-
-                        c_1 = 'sudo chown -R www-data:www-data /srv/salt/'
-                        os.system(c_1)
-
-                        source_dir_path_minion = '/var/www/' + app_dir_name + '/' + ver_dir_name
-                        c_inner = "'mkdir -p " + source_dir_path_minion + "'"
-                        c2 = "sudo salt \"*\" cmd.run " + c_inner
-                        os.system(c2)
-
-
-                        sls_config = source_dir_path_minion + '/' + str(webapp.source_file) + ":\n file:\n  - managed\n  - source: salt://172-31-38-144/" + app_dir_name + '/' + ver_dir_name + '/' + str(webapp.source_file)
-
-                        with open("/srv/salt/172-31-38-144/init.sls", "a") as f:
-                             f.write( "\n" + sls_config + "\n")
+			c1_5 = 'sudo rm ' + uploaded_source_path
+                        os.system(c1_5)
 
                         c4 = "sudo salt '*' state.highstate"
                         os.system(c4)
 
-                        c5 = "sudo salt '*' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
-                        os.system(c5)
+			for s in webapp.server.all():
+                                c5 = "sudo salt '" + s.salt_name + "' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
+                                c5_1 = "sudo salt '" + s.salt_name + "' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ; npm install'"
+                                os.system(c5)
+                                os.system(c5_1)
+
+                        for pkg in webapp.package_needed.all():
+                                package_shooter(pkg, webapp)
+
+                        os.system(c4)
+			
+			stat = {}
+                        ips = get_server_ips(webapp)
+
+			data0 = ''
+			data0 = make_info(data0, 0, len(ips), ips, 27202)
+			sock.send(data0)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+				f.write( "\n" + 'Upgrade: Send signal 0 successfully.' + "\n")
+
+			data6 = ''
+			data6 = make_info(data6, 6, len(ips), ips, 27202)
+			sock.send(data6)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Send signal 6 successfully.' + "\n")
+
+			msg = sock.recv(2048)
+			rev_info(msg, stat)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Receive info successfully.' + "\n" + str(stat) + '\n')
+
+			for st in stat['ip_stat']:
+				if st['load'] == 65523:
+                  			s = Server.objects.get(pr_ip = st['ip'])
+					c_kill = "sudo salt '"+ s.salt_name +"' cmd.run '/kill_nodejs'"
+#					c_kill = "sudo salt '"+ s.salt_name +"' cmd.run 'kill -9 `ps -ef | grep server.js | awk '{print $2}'`'"
+ 	                                c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ;nodejs " + webapp.entry + "'&"
+
+#					c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
+					os.system(c_kill)
+					os.system(c_start)
+			
+			data7 = ''
+			stat = {}
+                        data7 = make_info(data7, 7, len(ips), ips, 27202)
+                        sock.send(data7)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Send signal 7 successfully.' + "\n")
+
+                        msg = sock.recv(2048)
+                        rev_info(msg, stat)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Receive info successfully.' + "\n" + str(stat) + '\n')
+
+                        for st in stat['ip_stat']:
+                                if st['load'] == 65523:
+                                        s = Server.objects.get(pr_ip = st['ip'])
+					c_kill = "sudo salt '"+ s.salt_name +"' cmd.run '/kill_nodejs'"
+#                                        c_kill = "sudo salt '"+ s.salt_name +"' cmd.run 'kill -9 `ps -ef | grep server.js | awk '{print $2}'`'"
+					c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ;nodejs " + webapp.entry + "'&"
+#					c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
+                                        os.system(c_kill)
+                                        os.system(c_start)
+
+			data8 = ''
+			data8 = make_info(data8, 8, len(ips), ips, 27202)
+			sock.send(data8)
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Send signal 8 successfully.' + "\n")
+
+#			sock.shutdown(socket.SHUT_RDWR)
+			sock.close()
+#                        for s in webapp.server.all():
+#                               c6 = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
 
 			message = "Upgrade Successfully."
 		
@@ -315,6 +406,76 @@ def switch_to(request, source_id):
 #	webapp.url = 'http://54.186.171.250/' + app_dir_name + "/" + ver_dir_name + "/source/index.html"
 	webapp.save()
 
+        stat = {}
+        ips = get_server_ips(webapp)
+
+	sock = init_socket()
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Socket init successfully.' + "\n")
+
+        data0 = ''
+        data0 = make_info(data0, 0, len(ips), ips, 27202)
+        sock.send(data0)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Send signal 0 successfully.' + "\n")
+
+	data6 = ''
+        data6 = make_info(data6, 6, len(ips), ips, 27202)
+        sock.send(data6)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Send signal 6 successfully.' + "\n")
+
+        msg = sock.recv(2048)
+        rev_info(msg, stat)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Receive info successfully.' + str(stat) + "\n")
+
+        for st in stat['ip_stat']:
+		if st['load'] == 65523:
+                	s = Server.objects.get(pr_ip = st['ip'])
+			c_kill = "sudo salt '"+ s.salt_name +"' cmd.run '/kill_nodejs'"
+#                        c_kill = "sudo salt '"+ s.salt_name +"' cmd.run 'kill -9 `ps -ef | grep server.js | awk '{print $2}'`'"
+			c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ;nodejs " + webapp.entry + "'&"
+#                        c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
+                        os.system(c_kill)
+                        os.system(c_start)	
+
+	stat = {}
+	data7 = ''
+        data7 = make_info(data7, 7, len(ips), ips, 27202)
+        sock.send(data7)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Send signal 7 successfully.' + "\n")
+
+        msg = sock.recv(2048)
+        rev_info(msg, stat)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Receive info successfully.' + str(stat) + "\n")
+
+        for st in stat['ip_stat']:
+        	if st['load'] == 65523:
+                	s = Server.objects.get(pr_ip = st['ip'])
+			c_kill = "sudo salt '"+ s.salt_name +"' cmd.run '/kill_nodejs'"
+#                        c_kill = "sudo salt '"+ s.salt_name +"' cmd.run 'kill -9 `ps -ef | grep server.js | awk '{print $2}'`'"
+			c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ;nodejs " + webapp.entry + "'&"
+#                        c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
+                        os.system(c_kill)
+                        os.system(c_start)
+	data8 = ''
+	data8 = make_info(data8, 8, len(ips), ips, 27202)
+        sock.send(data8)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'Switch to: Send signal 8 successfully.' + "\n")
+
+#	sock.shutdown(socket.SHUT_RDWR)
+	sock.close()
 	return render_to_response('show_message.html', {'message' : 'Switch Successfully', 'logio':logio, 'logiourl':logiourl})
 
 @login_required
@@ -332,30 +493,67 @@ def displayapps(request):
 
 @login_required
 def displayapp(request, webapp_id ):
+#	time.sleep(3)
+	sock = init_socket()
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
 	
+	source = Source()
 	webapp = Webapp.objects.get(id = webapp_id)
 	for s in webapp.source_set.all():
 		if s.is_valid == True:
 			source = s
 	app_dir_name = str(webapp.name) + '_'  + str(webapp.id)
         ver_dir_name = source.name
-	path = '/srv/salt/172-31-38-144/' + app_dir_name + '/' + ver_dir_name
+
+	ips = get_server_ips(webapp)
+	
+	global sock
+	data0 = ''
+	data0 = make_info(data0, 0, len(ips), ips, 27202)
+	sock.send(data0)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'App detail: Send signal 0 successfully.' + "\n")
+
+	stat = {}
+	data5 = ''
+	data5 = make_info(data5, 5, len(ips), ips, 27202)
+	sock.send(data5)
+
+#	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+#             f.write( "\n" + 'App detail: Send signal 5 successfully.' + "\n")
+
+	msg = sock.recv(2048)
+	rev_info(msg, stat)
+
+	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+             f.write( "\n" + 'App detail: Receive info successfully.' + str(stat) + '\n')
+
+	for st in stat['ip_stat']:	
+		if st['load'] == 0:
+			Server.objects.get(pr_ip = st['ip']).load = 100
+		else:
+			Server.objects.get(pr_ip = st['ip']).load = st['load']
+		if (st['load'] >> 24) == 1:
+			Server.objects.get(pr_ip = st['ip']).is_up = False
+
+
+	server = webapp.server.all()[0]
+	path = '/srv/salt/' + server.pr_ip + '/' + app_dir_name + '/' + ver_dir_name
 
 	data = []
 	data.append(['Server', 'Load'])
-	data.append(['S1', 100])
-	data.append(['S2', 300])
-	data.append(['S3', 200])
+
+	for ser in webapp.server.all():
+		if ser.is_up == True:
+			data.append([str(ser.name), int(ser.load)])
+
+#	sock.shutdown(socket.SHUT_RDWR)
+        sock.close()
 
 	return render_to_response('app_new.html', {'logio':logio, 'logiourl':logiourl, 'webapp': webapp, 'data' : data, 'path' : path})
-
-def select(request):
-	hs1 = 'Apache'
-	hs2 = 'Tomcat'
-	return render_to_response('select.html', {'hs1' : hs1, 'hs2' : hs2})
 
 def display_session(request):
 	hs = request.POST['httpserver']
@@ -384,3 +582,49 @@ def uploadfile(request):
 		return render_to_response('show_message.html',{'message' : 'File upload successful.'})
 	else:
 		return render_to_response('show_message.html',{'message' : 'File upload failed.'})
+
+def get_server_ips(webapp):
+	ips = []
+	for server in webapp.server.all():
+		ips.append(server.pr_ip)
+	return ips
+
+
+def init_socket():
+#    global sock
+	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+	sock.bind(('127.0.0.1', 35937))
+	sock.connect(('127.0.0.1', 35938))
+	return sock
+
+def make_info(data, type, num, ips, port):
+        data = data + struct.pack('II', type, num)
+        for ip in ips:
+                valP = 0
+                ip_after = ip.split('-')
+                for n in ip_after:
+                        valP = valP << 8 | int(n)
+                data = data + struct.pack('I', valP)
+                data = data + struct.pack('II', port, 0)
+        return data
+
+def rev_info(msg, stat):
+#        stat = {}
+        type_, num = struct.unpack_from("II", msg, offset=0)
+        stat['type'] = type_
+        stat['num'] = num
+
+        i = 0
+        ip_stat = []
+        while i < num:
+                ip_raw = struct.unpack_from("I", msg, offset = 8 + i*12)[0]
+                ip_hex_str = str(hex(ip_raw))
+                ip = str(int(ip_hex_str[-8:-6], 16)) + '-' +str(int(ip_hex_str[-6:-4], 16)) + '-' +str(int(ip_hex_str[-4:-2], 16)) + '-' +str(int(ip_hex_str[-2:], 16))
+                port = struct.unpack_from("I", msg, offset = 8 + i*12 + 4)[0]
+                load = struct.unpack_from("I", msg, offset = 8 + i*12 + 8)[0]
+                ip_stat.append({'ip': ip, 'port': port, 'load':load})
+                i += 1
+
+        stat['ip_stat'] = ip_stat
+        print(stat)
+        return stat
