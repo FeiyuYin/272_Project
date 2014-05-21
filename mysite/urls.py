@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	
 	url(r'^index/$', 'mysite.views.index'),
+	url(r'^info/$', 'mysite.views.info'),
 	url(r'^accounts/login/$', 'mysite.views.login'),
 	url(r'^accounts/auth/$', 'mysite.views.auth_view'),
 	url(r'^accounts/logout/$', 'mysite.views.logout'),

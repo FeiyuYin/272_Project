@@ -1,19 +1,17 @@
 
-App detail: Send signal 0 successfully.
+Upgrade: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Upgrade: Send signal 6 successfully.
 
-App detail: Send signal 0 successfully.
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Upgrade: Send signal 7 successfully.
 
-App detail: Send signal 0 successfully.
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Upgrade: Send signal 8 successfully.
 
 App detail: Send signal 0 successfully.
 
@@ -23,29 +21,19 @@ App detail: Send signal 0 successfully.
 
 App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Socket init successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 0 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 6 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 7 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 8 successfully.
 
 App detail: Send signal 0 successfully.
 
@@ -58,158 +46,6 @@ App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load':
 App detail: Send signal 0 successfully.
 
 App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-Upgrade: Socket init successfully.
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-Upgrade: Socket init successfully.
 
 Upgrade: Send signal 0 successfully.
 
@@ -220,74 +56,130 @@ Upgrade: Receive info successfully.
 
 Upgrade: Send signal 7 successfully.
 
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 33554431, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 33554431, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-App detail: Send signal 0 successfully.
-
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
-
-Upgrade: Socket init successfully.
-
-Upgrade: Send signal 0 successfully.
-
-Upgrade: Send signal 6 successfully.
-
 Upgrade: Receive info successfully.
-{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-Upgrade: Send signal 7 successfully.
+Upgrade: Send signal 8 successfully.
 
-Upgrade: Socket init successfully.
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
 Upgrade: Send signal 0 successfully.
 
@@ -343,6 +235,315 @@ App detail: Send signal 0 successfully.
 
 App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 8 successfully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 8 successfully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 0, 'type': 1, 'ip_stat': []}
+
+Upgrade: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 260, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1310, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 260, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1414, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 260, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1518, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 260, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1518, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 3618, 'ip': '172-31-38-144', 'port': 27202}, {'load': 132, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1518, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 3618, 'ip': '172-31-38-144', 'port': 27202}, {'load': 132, 'ip': '172-31-36-132', 'port': 27202}, {'load': 2190, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 3618, 'ip': '172-31-38-144', 'port': 27202}, {'load': 132, 'ip': '172-31-36-132', 'port': 27202}, {'load': 2190, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 3618, 'ip': '172-31-38-144', 'port': 27202}, {'load': 132, 'ip': '172-31-36-132', 'port': 27202}, {'load': 2190, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1423, 'ip': '172-31-36-132', 'port': 27202}, {'load': 160, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1475, 'ip': '172-31-36-132', 'port': 27202}, {'load': 160, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1475, 'ip': '172-31-36-132', 'port': 27202}, {'load': 160, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1475, 'ip': '172-31-36-132', 'port': 27202}, {'load': 160, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1475, 'ip': '172-31-36-132', 'port': 27202}, {'load': 160, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 52, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1475, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1605, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 92, 'ip': '172-31-38-144', 'port': 27202}, {'load': 6618, 'ip': '172-31-36-132', 'port': 27202}, {'load': 4767, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 92, 'ip': '172-31-38-144', 'port': 27202}, {'load': 7188, 'ip': '172-31-36-132', 'port': 27202}, {'load': 4819, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 80, 'ip': '172-31-38-144', 'port': 27202}, {'load': 2036, 'ip': '172-31-36-132', 'port': 27202}, {'load': 80, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 80, 'ip': '172-31-38-144', 'port': 27202}, {'load': 2244, 'ip': '172-31-36-132', 'port': 27202}, {'load': 2093, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 8 successfully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 0, 'type': 2, 'ip_stat': []}
+
+Upgrade: Send signal 8 successfully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 33554431, 'ip': '172-31-38-144', 'port': 27202}, {'load': 33554431, 'ip': '172-31-36-132', 'port': 27202}, {'load': 33554431, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 416, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 704, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 300, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Send signal 7 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 33554431, 'ip': '172-31-38-144', 'port': 27202}, {'load': 1080, 'ip': '172-31-36-132', 'port': 27202}, {'load': 33554431, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 1268, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1040, 'ip': '172-31-40-226', 'port': 27202}]}
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 1682, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1040, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Disable old source successrully.
+
+Upgrade: New source saved in database.
+
+Upgrade: Config dirs for servers successrully.
+
+Upgrade: Clear uploaded file successrully.
+
+Upgrade: Source file copy to Minions successrully.
+
+Upgrade: Unzip and install npm packages on Minions successrully.
+
+Upgrade: Package installed on Minions successrully.
+
+Upgrade: Send signal 0 successfully.
+
+Upgrade: Send signal 6 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Stop and start service on first part of Minions successrully.
+
+Upgrade: Send signal 7 successfully.
+
+Upgrade: Receive info successfully.
+{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Upgrade: Stop and start service on second part of Minions successrully.
+
+Upgrade: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 260, 'ip': '172-31-38-144', 'port': 27202}, {'load': 424, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 1570, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+App detail: Send signal 0 successfully.
+
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 414, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
 Switch to: Socket init successfully.
 
 Switch to: Send signal 0 successfully.
@@ -361,101 +562,141 @@ App detail: Send signal 0 successfully.
 
 App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Socket init successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 0 successfully.
 
-Upgrade: Socket init successfully.
+Switch to: Send signal 6 successfully.
 
-Upgrade: Send signal 0 successfully.
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-Upgrade: Send signal 6 successfully.
+Switch to: Send signal 7 successfully.
 
-Upgrade: Receive info successfully.
-{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-Upgrade: Send signal 7 successfully.
+Switch to: Send signal 8 successfully.
 
-Upgrade: Receive info successfully.
-{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Socket init successfully.
 
-Upgrade: Send signal 8 successfully.
+Switch to: Send signal 0 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 6 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 7 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 8 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Socket init successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 6 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 7 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 8 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Socket init successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 0 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 6 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 7 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 8 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Socket init successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 6 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 7 successfully.
 
-App detail: Send signal 0 successfully.
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+Switch to: Send signal 8 successfully.
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 1547, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 300, 'ip': '172-31-38-144', 'port': 27202}, {'load': 300, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 716, 'ip': '172-31-38-144', 'port': 27202}, {'load': 300, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 2908, 'ip': '172-31-38-144', 'port': 27202}, {'load': 300, 'ip': '172-31-36-132', 'port': 27202}, {'load': 300, 'ip': '172-31-40-226', 'port': 27202}]}
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 3112, 'ip': '172-31-38-144', 'port': 27202}, {'load': 300, 'ip': '172-31-36-132', 'port': 27202}, {'load': 300, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Socket init successfully.
+
+Switch to: Send signal 0 successfully.
+
+Switch to: Send signal 6 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 6, 'ip_stat': [{'load': 65523, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 65523, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 7 successfully.
+
+Switch to: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 65523, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+
+Switch to: Send signal 8 successfully.
 
 App detail: Send signal 0 successfully.
 
-App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 0, 'ip': '172-31-38-144', 'port': 27202}, {'load': 0, 'ip': '172-31-36-132', 'port': 27202}, {'load': 0, 'ip': '172-31-40-226', 'port': 27202}]}
+App detail: Receive info successfully.{'num': 3, 'type': 4, 'ip_stat': [{'load': 4332, 'ip': '172-31-38-144', 'port': 27202}, {'load': 300, 'ip': '172-31-36-132', 'port': 27202}, {'load': 240, 'ip': '172-31-40-226', 'port': 27202}]}
 
 Switch to: Socket init successfully.
 

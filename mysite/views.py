@@ -152,7 +152,7 @@ def deploy(request):
 				os.system(c5)
 
 			for pkg in webapp.package_needed.all():
-                                package_shooter(pkg, webapp)
+                               package_shooter(pkg, webapp)
 
 			os.system(c4)
 			
@@ -180,6 +180,7 @@ def deploy(request):
 			message = 'Webapp created successfully.'
 			return render_to_response('show_message.html', {'message': message, 'logio':logio, 'logiourl':logiourl})
 		else:
+#			sock.close()
 			return render_to_response('deploy_new.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
 
 def config_dir(s, webapp):
@@ -217,10 +218,12 @@ def package_shooter(pkg, wa):
 	app_dir_name = str(wa.name) + '_'  + str(wa.id)
 	ver_dir_name = str(wa.name) + '_'  + str(wa.id) + '_' + str(wa.num_ver)
 
+	sls_config = ''
 	if pkg.name == 'npm':
                 sls_config = pkg.name + ':\n pkg:\n  - installed'
-        elif pkg.name == 'ejb' or pkg.name == 'express':
+        elif pkg.name == 'ejs' or pkg.name == 'express' or pkg.name == 'ejs' or pkg.name == 'mongoose' or pkg.name =='passport':
                 sls_config = pkg.name + ':\n npm:\n  - installed\n  - dir: /var/www/' + app_dir_name + '/' + ver_dir_name + '/' + (str(wa.source_file).split('.zip')[0])
+	
 
 	for s in wa.server.all():
 		dir_name = '/srv/salt/' + s.pr_ip + '/init.sls'
@@ -239,9 +242,6 @@ def upgrade_start(request, webapp_id):
 
 @login_required
 def upgrade(request, webapp_id):
-	sock = init_socket()
-	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
-             f.write( "\n" + 'Upgrade: Socket init successfully.' + "\n")
 	username = request.user.username
         logio = 'Hi, ' + username + '. Click here to log out.'
         logiourl = '/accounts/logout/'
@@ -250,9 +250,13 @@ def upgrade(request, webapp_id):
 		form = SourceForm(request.POST, request.FILES)	
 		webapp = Webapp.objects.get(id = webapp_id)
 		webapp.num_ver = webapp.num_ver + 1
-		for s in webapp.source_set.all():
-                        	s.is_valid = False
-                        	s.save()
+		for source in webapp.source_set.all():
+                       	source.is_valid = False
+                       	source.save()
+
+		with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+			f.write( "\n" + 'Upgrade: Disable old source successrully.' + "\n")
+			f.close()
 
 		if form.is_valid():
 			source = form.save(commit = False)
@@ -262,6 +266,10 @@ def upgrade(request, webapp_id):
 			source.webapp = webapp
 			source.is_valid = True
 			source.save()
+
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                        	f.write( "\n" + 'Upgrade: New source saved in database.' + "\n")
+                        	f.close()
 					
 			webapp.source_file = source.s_file
 			webapp.description = source.description
@@ -275,27 +283,43 @@ def upgrade(request, webapp_id):
 
 			for s in webapp.server.all():
 				config_dir(s, webapp)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                        	f.write( "\n" + 'Upgrade: Config dirs for servers successrully.' + "\n")
+                        	f.close()
 
 			c1_5 = 'sudo rm ' + uploaded_source_path
                         os.system(c1_5)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Clear uploaded file successrully.' + "\n")
+                                f.close()
 
                         c4 = "sudo salt '*' state.highstate"
                         os.system(c4)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Source file copy to Minions successrully.' + "\n")
+                                f.close()
 
 			for s in webapp.server.all():
                                 c5 = "sudo salt '" + s.salt_name + "' cmd.run 'unzip /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + str(webapp.source_file) + " -d /var/www/" + app_dir_name + "/" + ver_dir_name + "'"
                                 c5_1 = "sudo salt '" + s.salt_name + "' cmd.run 'cd /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/ ; npm install'"
                                 os.system(c5)
                                 os.system(c5_1)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Unzip and install npm packages on Minions successrully.' + "\n")
+                                f.close()
 
                         for pkg in webapp.package_needed.all():
                                 package_shooter(pkg, webapp)
 
                         os.system(c4)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Package installed on Minions successrully.' + "\n")
+                                f.close()
 			
 			stat = {}
                         ips = get_server_ips(webapp)
 
+			sock = init_socket()
 			data0 = ''
 			data0 = make_info(data0, 0, len(ips), ips, 27202)
 			sock.send(data0)
@@ -313,6 +337,8 @@ def upgrade(request, webapp_id):
 			msg = sock.recv(2048)
 			rev_info(msg, stat)
 
+			sock.close()
+
 			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
                                 f.write( "\n" + 'Upgrade: Receive info successfully.' + "\n" + str(stat) + '\n')
 
@@ -326,7 +352,11 @@ def upgrade(request, webapp_id):
 #					c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
 					os.system(c_kill)
 					os.system(c_start)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Stop and start service on first part of Minions successrully.' + "\n")
+                                f.close()
 			
+			sock = init_socket()
 			data7 = ''
 			stat = {}
                         data7 = make_info(data7, 7, len(ips), ips, 27202)
@@ -337,6 +367,7 @@ def upgrade(request, webapp_id):
 
                         msg = sock.recv(2048)
                         rev_info(msg, stat)
+			sock.close()
 
 			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
                                 f.write( "\n" + 'Upgrade: Receive info successfully.' + "\n" + str(stat) + '\n')
@@ -350,7 +381,11 @@ def upgrade(request, webapp_id):
 #					c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
                                         os.system(c_kill)
                                         os.system(c_start)
+			with open('/home/ubuntu/django_test/mysite/log', "a") as f:
+                                f.write( "\n" + 'Upgrade: Stop and start service on second part of Minions successrully.' + "\n")
+                                f.close()
 
+			sock = init_socket()
 			data8 = ''
 			data8 = make_info(data8, 8, len(ips), ips, 27202)
 			sock.send(data8)
@@ -369,7 +404,7 @@ def upgrade(request, webapp_id):
 
 	else:
 		form = SourceForm()
-	return render_to_response('upgrade.html', {'form': form, 'logio':logio, 'logiourl':logiourl})
+	return render_to_response('apps.html')
 
 @login_required
 def view_versions(request, webapp_id):
@@ -431,6 +466,7 @@ def switch_to(request, source_id):
         msg = sock.recv(2048)
         rev_info(msg, stat)
 
+	sock.close()
 	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
              f.write( "\n" + 'Switch to: Receive info successfully.' + str(stat) + "\n")
 
@@ -444,6 +480,7 @@ def switch_to(request, source_id):
                         os.system(c_kill)
                         os.system(c_start)	
 
+	sock = init_socket()
 	stat = {}
 	data7 = ''
         data7 = make_info(data7, 7, len(ips), ips, 27202)
@@ -455,6 +492,7 @@ def switch_to(request, source_id):
         msg = sock.recv(2048)
         rev_info(msg, stat)
 
+	sock.close()
 	with open('/home/ubuntu/django_test/mysite/log', "a") as f:
              f.write( "\n" + 'Switch to: Receive info successfully.' + str(stat) + "\n")
 
@@ -467,6 +505,8 @@ def switch_to(request, source_id):
 #                        c_start = "sudo salt '"+ s.salt_name +"' cmd.run 'nodejs /var/www/" + app_dir_name + "/" + ver_dir_name + "/" + (str(webapp.source_file).split('.zip')[0]) + "/" + webapp.entry + "'&"
                         os.system(c_kill)
                         os.system(c_start)
+
+	sock = init_socket()
 	data8 = ''
 	data8 = make_info(data8, 8, len(ips), ips, 27202)
         sock.send(data8)
@@ -509,7 +549,7 @@ def displayapp(request, webapp_id ):
 
 	ips = get_server_ips(webapp)
 	
-	global sock
+#	global sock
 	data0 = ''
 	data0 = make_info(data0, 0, len(ips), ips, 27202)
 	sock.send(data0)
@@ -532,12 +572,16 @@ def displayapp(request, webapp_id ):
              f.write( "\n" + 'App detail: Receive info successfully.' + str(stat) + '\n')
 
 	for st in stat['ip_stat']:	
+		ser = Server.objects.get(pr_ip = st['ip'])
 		if st['load'] == 0:
-			Server.objects.get(pr_ip = st['ip']).load = 100
+			ser.load = 100
 		else:
-			Server.objects.get(pr_ip = st['ip']).load = st['load']
+			ser.load = st['load']
 		if (st['load'] >> 24) == 1:
-			Server.objects.get(pr_ip = st['ip']).is_up = False
+			ser.is_up = False
+		else:
+			ser.is_up = True
+			
 
 
 	server = webapp.server.all()[0]
@@ -554,6 +598,8 @@ def displayapp(request, webapp_id ):
         sock.close()
 
 	return render_to_response('app_new.html', {'logio':logio, 'logiourl':logiourl, 'webapp': webapp, 'data' : data, 'path' : path})
+
+
 
 def display_session(request):
 	hs = request.POST['httpserver']
@@ -628,3 +674,6 @@ def rev_info(msg, stat):
         stat['ip_stat'] = ip_stat
         print(stat)
         return stat
+
+def info(request):
+	return render_to_response('info.html')

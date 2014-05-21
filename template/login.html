@@ -9,11 +9,9 @@
 <link rel="stylesheet" type="text/css" href="/static/assets/css/main.css">
 
  <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
-   <link rel="stylesheet" href="/static/assets/css/jq.css" type="text/css"/>
-    <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css" id="" media="print, projection, screen" />
+
     <script type="text/javascript" src="/static/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/static/assets/js/tablesorter.js"></script>
-     <link href="/static/assets/css/bootstrap_2.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script type='text/javascript' src='/static/assets/js/jquery.modal.js'></script>
@@ -138,7 +136,7 @@
     <div class="container">
 
       <div class="masthead">
-        <h3 align = "left" class="muted">Cloud Deploy Platform</h3>
+        <h3 align="left" class="muted">Cloud Deploy Platform</h3>
 	<p align="right"><a class="{{ class_p }}" href = "{{ logiourl }}">{{ logio }}</a></p>
         <div class="navbar">
           <div class="navbar-inner">
@@ -156,30 +154,39 @@
 
 
 	<div class="jumbotron">
-	<h2>Please Login First</h2>
+	<h2><font color = '#1E90FF'>Please login first</font></h2>
         <h1>Cloud Deployment Platform</h1>
-        <p class="lead"> Automatic Cloud Applications and Websites 
+        <p class="lead"> Automatic Cloud Applications  
           Configuration and Depolyment  </p>
-        <a class="btn btn-large btn-success" href="#">Get started today</a>
+	<br>
+	<br>
       </div>
-	      <div class="row-fluid">
-        <div class="span4">
-          <h2>Load Balancer Included</h2>
-          <p>The load balancer component is included in this platform. Workload would be distributed evenly by the load balancer.</p>
-         
+<div class="row-fluid">
+        <div class="span3">
+          <h2>   Load Balancer Included</h2>
+
+         <img src="/static/assets/css/images/load_balancer.jpg" class="img-circle" >
         </div>
-        <div class="span4">
-          <h2>Saltstack Based Platform</h2>
-          <p>This platform is based on saltstack, a software providing configuration management, infrastructure automation and cloud orchestration. </p>
-          <p><a class="btn" href="http://www.saltstack.com/">Visit Saltstack &raquo;</a></p>
+        <div class="span3">
+          <h2>Automated Deployment</h2>
+          <img src="/static/assets/css/images/automated_depoyment.jpg" class="img-responsive" >
        </div>
-        <div class="span4">
-          <h2>Master Backup Enabled</h2>
-          <p>Two master nodes are provided with realtime sychronazation. In case the default master was down, the backup master would take over and keep the platform running.</p>
-        </div>
+        <div class="span3">
+          <h2>Version Control </h2>
+          <br>
+          <img src="/static/assets/css/images/version_control.jpg" class="img-responsive" >
+
+      </div>
+      <div class="span3" >
+          <h2> Unsuspended Update</h2>
+          <br>
+          <img src="/static/assets/css/images/unsuspended_update.jpg" class="img-circle">
+
+      </div>
       </div>
 
 </div>
+<div align = 'right' color = '#FF0000'><a href = '/info/'><font size="3" color="green">To whom may interested in our system</font></a>&nbsp;&nbsp;&nbsp;</div>
  <div class="overlay"></div>
 
     <div id="modal1" class="modal" >
@@ -196,6 +203,6 @@
   </form>
 
 
-        </div>
+    </div>
 
 </body></html>
